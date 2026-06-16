@@ -254,32 +254,35 @@
                     <p class="text-gray-500 tracking-widest text-sm">看看當年超青澀、超好笑的我們（點擊照片可以放大看細節喔！）</p>
                 </div>
 
-                <!-- 橫向滑動照片廊 (點擊均可放大) -->
-                <div class="flex overflow-x-auto gap-6 pb-8 hide-scrollbar snap-x snap-mandatory">
-                    <div class="flex-none w-72 md:w-96 snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200', '懷念的南大紅樓校園（回憶殺！）')">
+                <!-- 橫向滑動照片廊 (僅剩兩張，並在大螢幕下置中) -->
+                <div class="flex overflow-x-auto md:justify-center gap-6 pb-8 hide-scrollbar snap-x snap-mandatory">
+                    
+                    <!-- 第一張照片 -->
+                    <div class="flex-none w-72 md:w-[420px] snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('photo1.jpg', '懷念的南大紅樓校園（回憶殺！）')">
                         <div class="relative w-full h-64 md:h-72">
-                            <img src="IMG_4060.JPG" alt="校園" class="w-full h-full object-cover rounded-xl">
+                            <img src="IMG_4060.jpg" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800'" 
+                                 alt="校園" 
+                                 class="w-full h-full object-cover rounded-xl">
                             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
                                 <span class="text-white font-serif tracking-widest border border-white px-6 py-2"><i class="fas fa-search-plus mr-2"></i>點擊放大</span>
                             </div>
                         </div>
                     </div>
-                    <div class="flex-none w-72 md:w-96 snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=1200', '當年拍照不擺怪表情就不舒服的我們')">
+
+                    <!-- 第二張照片 -->
+                    <div class="flex-none w-72 md:w-[420px] snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('photo2.jpg', '當年拍照不擺怪表情就不舒服的我們')">
                         <div class="relative w-full h-64 md:h-72">
-                            <img src="IMG_4061.JPG" alt="合照" class="w-full h-full object-cover rounded-xl">
+                            <img src="IMG_4061.jpg" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800'" 
+                                 alt="合照" 
+                                 class="w-full h-full object-cover rounded-xl">
                             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
                                 <span class="text-white font-serif tracking-widest border border-white px-6 py-2"><i class="fas fa-search-plus mr-2"></i>點擊放大</span>
                             </div>
                         </div>
                     </div>
-                    <div class="flex-none w-72 md:w-96 snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('https://images.unsplash.com/photo-1511629091441-ee46146481b6?auto=format&fit=crop&q=80&w=1200', '吵吵鬧鬧的熱鬧聚會時光')">
-                        <div class="relative w-full h-64 md:h-72">
-                            <img src="https://images.unsplash.com/photo-1511629091441-ee46146481b6?auto=format&fit=crop&q=80&w=800" alt="聚會" class="w-full h-full object-cover rounded-xl">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
-                                <span class="text-white font-serif tracking-widest border border-white px-6 py-2"><i class="fas fa-search-plus mr-2"></i>點擊放大</span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 <!-- 募集雲端相簿 -->
@@ -716,7 +719,7 @@
 
         function closeEditModal() {
             const modal = document.getElementById('edit-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
             modal.classList.remove('opacity-100');
         }
 
