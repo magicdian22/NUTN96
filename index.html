@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>慶仁老師光榮退休餐聚！ | 南大特教96級</title>
+    <title>慶仁老師光榮退休餐聚！ | 台大特教96級</title>
     
     <!-- 載入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -240,7 +240,7 @@
                     </div>
                     <span class="font-serif text-3xl md:text-5xl text-brand-gold font-light pb-6">:</span>
                     <div class="flex flex-col items-center">
-                        <span id="cd-seconds" class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-gold font-light mb-2">00</span>
+                        <span id="cd-seconds" class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light mb-2">00</span>
                         <span class="text-xs md:text-sm text-brand-gold/60 tracking-widest">SECS</span>
                     </div>
                 </div>
@@ -260,7 +260,7 @@
                     <!-- 第一張照片 -->
                     <div class="flex-none w-72 md:w-[420px] snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('photo1.jpg', '懷念的南大紅樓校園（回憶殺！）')">
                         <div class="relative w-full h-64 md:h-72">
-                            <img src="IMG_4060.jpg" 
+                            <img src="IMG_4060.JPG" 
                                  onerror="this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800'" 
                                  alt="校園" 
                                  class="w-full h-full object-cover rounded-xl">
@@ -273,7 +273,7 @@
                     <!-- 第二張照片 -->
                     <div class="flex-none w-72 md:w-[420px] snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('photo2.jpg', '當年拍照不擺怪表情就不舒服的我們')">
                         <div class="relative w-full h-64 md:h-72">
-                            <img src="IMG_4061.jpg" 
+                            <img src="IMG_4061.JPG" 
                                  onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800'" 
                                  alt="合照" 
                                  class="w-full h-full object-cover rounded-xl">
@@ -347,8 +347,12 @@
                 </div>
 
                 <!-- 留言板列表 -->
-                <div class="md:col-span-3 space-y-4 max-h-[420px] overflow-y-auto pr-2 custom-scroll hide-scrollbar" id="comments-list">
-                    <!-- 動態載入 -->
+                <div class="md:col-span-3 space-y-4 max-h-[420px] overflow-y-auto pr-2 custom-scroll hide-scrollbar relative" id="comments-list">
+                    <!-- 載入中動畫 -->
+                    <div id="comments-loading" class="flex flex-col items-center justify-center py-12 text-gray-400 space-y-2">
+                        <i class="fas fa-spinner animate-spin text-2xl text-brand-gold"></i>
+                        <span class="text-xs tracking-widest">正在從雲端載入悄悄話...</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -486,6 +490,12 @@
     </div>
 
     <script>
+        // ==========================================
+        // 🛠️ GOOGLE 試算表串接網址設定欄位
+        // ==========================================
+        // 請將第一步部屬完成後取得的「Web 應用程式 URL」複製，並貼在下方雙引號中：
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpRVtckMKPUBafv7MXTFOTY9UXS_8v4T0mc6NT42cypeOW49fsU4s9lHj0odGleUOa/exec"; 
+
         // 倒數計時邏輯 (目標：2026/07/11T17:30:00)
         function updateCountdown() {
             const targetDate = new Date('2026-07-11T17:30:00').getTime();
@@ -564,45 +574,75 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 留言板預載資料 (溫馨幽默風)
-        const initialComments = [
+        // 留言板預載記憶體假資料 (在沒設定 Google 試算表網址前會作為預載替代)
+        let localComments = [
             {
                 id: "comment-1",
                 author: "家委 (球場上負責不傳球的辣個男人)",
                 tag: "96級同窗",
                 text: "慶仁老師退休快樂！以前我們在場上打球，我都只顧著自己出手死不傳球，每次看到你在場邊搖頭苦笑、還溫柔地勸我要多配合大家，現在回想起來真的好懷念！這次聚餐我保證乖乖聽話，只負責把最好吃的菜夾到老師碗裡！",
-                time: "剛才"
+                time: "2026/6/16 下午4:00:00"
             },
             {
                 id: "comment-2",
                 author: "冠挺 (逼人灌水球的那位)",
                 tag: "96級同窗",
                 text: "老師～還記得以前辦活動我帶頭逼大家瘋狂灌水球互砸嗎？那時候全場濕答答的，連您經過都差點被我們波及，好險您一如既往的大量，只有慈祥地笑著叫我們注意安全。現在我已經成熟穩重多了！這次絕對不灌水球，改灌老師滿滿的祝福！",
-                time: "1 小時前"
+                time: "2026/6/16 下午3:12:00"
             },
             {
                 id: "comment-3",
                 author: "電話（台大四年中全勤獎那位）",
                 tag: "96級同窗",
                 text: "天啊時間過得太快了，一轉眼老師居然要光榮退休了！身為在台大四年拿到全勤獎的優等生，每次想起在南大特教與老師相處的溫馨點滴，依然覺得是最美好的回憶。祝福老師退休後生活天天精彩，每天都要全勤享受悠閒時光喔！",
-                time: "4 小時前"
+                time: "2026/6/16 上午11:45:00"
             }
         ];
 
         let isAdmin = false;
         const ADMIN_PASSWORD = "admin96"; // 管理者預設密碼
 
-        // 渲染留言
-        function renderComments() {
-            const container = document.getElementById('comments-list');
-            if (!container) return;
-            container.innerHTML = '';
+        // 載入與渲染留言牆
+        async function fetchAndRenderComments() {
+            const listContainer = document.getElementById('comments-list');
+            const loadingIndicator = document.getElementById('comments-loading');
             
-            initialComments.forEach(comment => {
+            // 1. 如果有填寫 GOOGLE_SCRIPT_URL，就從雲端 API 抓資料
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== "") {
+                if (loadingIndicator) loadingIndicator.classList.remove('hidden');
+                try {
+                    const response = await fetch(GOOGLE_SCRIPT_URL);
+                    const json = await response.json();
+                    if (json.status === 'success') {
+                        localComments = json.data;
+                    }
+                } catch (err) {
+                    console.error("無法從 Google Sheets 載入留言:", err);
+                } finally {
+                    if (loadingIndicator) loadingIndicator.classList.add('hidden');
+                }
+            } else {
+                // 如果是空網址，直接隱藏載入中提示
+                if (loadingIndicator) loadingIndicator.classList.add('hidden');
+            }
+
+            // 2. 開始繪製留言畫面
+            listContainer.innerHTML = '';
+            
+            if (localComments.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="text-center py-12 text-gray-400 text-xs tracking-widest">
+                        <i class="far fa-comment-dots text-lg mb-2 block"></i> 尚無悄悄話，快當第一個留言的人！
+                    </div>
+                `;
+                return;
+            }
+
+            localComments.forEach(comment => {
                 const el = document.createElement('div');
-                el.className = "bg-white rounded-xl p-4 shadow-sm border border-gray-100 comment-item relative";
+                el.className = "bg-white rounded-xl p-4 shadow-sm border border-gray-100 comment-item relative mb-4";
                 
-                // 登入後顯示管理者控制按鈕
+                // 管理者控制按鈕
                 const adminControls = isAdmin ? `
                     <div class="flex items-center gap-2 ml-2">
                         <button onclick="openEditModal('${comment.id}')" class="text-xs text-gray-400 hover:text-brand-gold transition duration-200" title="編輯留言">
@@ -625,12 +665,12 @@
                     <p class="text-xs text-gray-600 leading-relaxed text-justify mb-2">${escapeHtml(comment.text)}</p>
                     <span class="absolute bottom-2 right-4 text-[10px] text-gray-400 font-light">${escapeHtml(comment.time)}</span>
                 `;
-                container.appendChild(el);
+                listContainer.appendChild(el);
             });
         }
 
-        // 送出留言
-        function submitComment(e) {
+        // 送出新增留言
+        async function submitComment(e) {
             e.preventDefault();
             const author = document.getElementById('comment-author').value.trim();
             const tag = document.getElementById('comment-tag').value;
@@ -638,26 +678,140 @@
 
             if (!author || !text) return;
 
-            // 新增留言並給予獨一無二的 ID 識別碼
-            initialComments.unshift({
-                id: 'comment-' + Date.now(),
+            const newId = 'comment-' + Date.now();
+            const currentTimeStr = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+            
+            const newComment = {
+                id: newId,
                 author: author,
                 tag: tag,
                 text: text,
-                time: "剛才"
-            });
+                time: currentTimeStr
+            };
 
-            renderComments();
+            // 1. 本地立即渲染 (優良的使用者體驗)
+            localComments.unshift(newComment);
+            fetchAndRenderComments();
 
-            // 重置表單
+            // 重置表單欄位
             document.getElementById('comment-author').value = '';
             document.getElementById('comment-text').value = '';
+            showToast("成功留下悄悄話！正在儲存中...");
 
-            // 顯示成功 Toast
-            showToast("成功留下悄悄話！老師一定會看到。");
+            // 2. 如果填寫了試算表網址，就 POST 到 Google Sheets
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== "") {
+                try {
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: "POST",
+                        mode: "no-cors", // Google App Script 轉向需要 no-cors 模式
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(newComment)
+                    });
+                    // no-cors 下無法讀取 response body，我們直接假定成功
+                    showToast("💾 悄悄話已同步備份至雲端試算表！");
+                } catch (err) {
+                    console.error("同步至 Google Sheets 失敗:", err);
+                    showToast("⚠️ 本地留言成功，但儲存至雲端時發生小錯誤");
+                }
+            } else {
+                showToast("留言成功囉！(目前為本地儲存模式)");
+            }
         }
 
-        // 管理者相關功能
+        // 刪除留言
+        async function deleteComment(id) {
+            const index = localComments.findIndex(c => c.id === id);
+            if (index === -1) return;
+
+            // 1. 本地立即移除
+            localComments.splice(index, 1);
+            fetchAndRenderComments();
+            showToast("🗑️ 正在從雲端下架留言...");
+
+            // 2. 同步發送刪除指令至 Google Sheets
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== "") {
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ action: "delete", id: id })
+                    });
+                    showToast("🗑️ 雲端數據已完全清空刪除！");
+                } catch (err) {
+                    console.error("雲端刪除失敗:", err);
+                }
+            } else {
+                showToast("🗑️ 留言已成功刪除！");
+            }
+        }
+
+        // 開啟編輯留言視窗
+        function openEditModal(id) {
+            const comment = localComments.find(c => c.id === id);
+            if (!comment) return;
+
+            document.getElementById('edit-comment-id').value = comment.id;
+            document.getElementById('edit-comment-author').value = comment.author;
+            document.getElementById('edit-comment-tag').value = comment.tag;
+            document.getElementById('edit-comment-text').value = comment.text;
+
+            const modal = document.getElementById('edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+        }
+
+        function closeEditModal() {
+            const modal = document.getElementById('edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+        }
+
+        // 儲存修改
+        async function saveEditedComment() {
+            const id = document.getElementById('edit-comment-id').value;
+            const author = document.getElementById('edit-comment-author').value.trim();
+            const tag = document.getElementById('edit-comment-tag').value;
+            const text = document.getElementById('edit-comment-text').value.trim();
+
+            if (!author || !text) return;
+
+            const comment = localComments.find(c => c.id === id);
+            if (!comment) return;
+
+            // 1. 本地立刻修改
+            comment.author = author;
+            comment.tag = tag;
+            comment.text = text;
+            fetchAndRenderComments();
+            closeEditModal();
+            showToast("✏️ 正在向雲端寫入變更...");
+
+            // 2. 同步發送編輯指令至 Google Sheets
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== "") {
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            action: "edit",
+                            id: id,
+                            author: author,
+                            tag: tag,
+                            text: text
+                        })
+                    });
+                    showToast("✏️ 雲端資料庫編修完成！");
+                } catch (err) {
+                    console.error("雲端編輯失敗:", err);
+                }
+            } else {
+                showToast("✏️ 留言已成功編修！");
+            }
+        }
+
+        // 管理者密碼驗證
         function openAdminModal() {
             const modal = document.getElementById('admin-modal');
             modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -679,7 +833,7 @@
                 closeAdminModal();
                 document.getElementById('admin-toggle-btn').classList.add('hidden');
                 document.getElementById('admin-logout-btn').classList.remove('hidden');
-                renderComments();
+                fetchAndRenderComments();
                 showToast("🔓 已登入管理模式，可直接編輯/刪除留言！");
             } else {
                 document.getElementById('admin-error-msg').classList.remove('hidden');
@@ -690,58 +844,11 @@
             isAdmin = false;
             document.getElementById('admin-toggle-btn').classList.remove('hidden');
             document.getElementById('admin-logout-btn').classList.add('hidden');
-            renderComments();
+            fetchAndRenderComments();
             showToast("🔒 已登出管理員模式");
         }
 
-        function deleteComment(id) {
-            const index = initialComments.findIndex(c => c.id === id);
-            if (index !== -1) {
-                initialComments.splice(index, 1);
-                renderComments();
-                showToast("🗑️ 留言已成功刪除！");
-            }
-        }
-
-        function openEditModal(id) {
-            const comment = initialComments.find(c => c.id === id);
-            if (!comment) return;
-
-            document.getElementById('edit-comment-id').value = comment.id;
-            document.getElementById('edit-comment-author').value = comment.author;
-            document.getElementById('edit-comment-tag').value = comment.tag;
-            document.getElementById('edit-comment-text').value = comment.text;
-
-            const modal = document.getElementById('edit-modal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.classList.add('opacity-100');
-        }
-
-        function closeEditModal() {
-            const modal = document.getElementById('edit-modal');
-            lightbox.classList.add('opacity-0', 'pointer-events-none');
-            modal.classList.remove('opacity-100');
-        }
-
-        function saveEditedComment() {
-            const id = document.getElementById('edit-comment-id').value;
-            const author = document.getElementById('edit-comment-author').value.trim();
-            const tag = document.getElementById('edit-comment-tag').value;
-            const text = document.getElementById('edit-comment-text').value.trim();
-
-            if (!author || !text) return;
-
-            const comment = initialComments.find(c => c.id === id);
-            if (comment) {
-                comment.author = author;
-                comment.tag = tag;
-                comment.text = text;
-                renderComments();
-                closeEditModal();
-                showToast("✏️ 留言已成功編修！");
-            }
-        }
-
+        // Toast 訊息框
         function showToast(message) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').innerText = message;
@@ -751,10 +858,10 @@
             setTimeout(() => {
                 toast.classList.add('opacity-0', 'pointer-events-none');
                 toast.classList.remove('opacity-100');
-            }, 3000);
+            }, 3500);
         }
 
-        // 安全字串轉義防止 XSS
+        // 安全字串轉義 (防止 XSS)
         function escapeHtml(str) {
             return str.replace(/[&<>'"]/g, 
                 tag => ({
@@ -767,9 +874,9 @@
             );
         }
 
-        // 初始化
+        // 網頁開啟時初始化讀取
         window.onload = function() {
-            renderComments();
+            fetchAndRenderComments();
         };
     </script>
 </body>
