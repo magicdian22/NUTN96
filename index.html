@@ -1,395 +1,499 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>林慶仁教授榮退餐聚 | 南大特教96級</title>
+    <title>慶仁老師光榮退休餐聚！ | 南大特教96級</title>
+    
+    <!-- 載入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- 載入 Google Fonts：襯線體(標題用)與無襯線體(內文用) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 載入 FontAwesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#7b1113',    // 南大紅樓深酒紅
+                            gold: '#c5a059',   // 典雅香檳金
+                            lightgold: '#e8d099',
+                            bg: '#faf9f6',     // 溫暖象牙白
+                            text: '#2d3748',   // 深灰文字
+                            dark: '#1a1a1a'
+                        }
+                    },
+                    boxShadow: {
+                        'elegant': '0 10px 40px -10px rgba(123, 17, 19, 0.15)',
+                        'card': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #FFF9F0;
-            overflow-x: hidden;
+            background-color: #faf9f6;
+            color: #2d3748;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237b1113' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* 活潑的氣泡漂浮背景動畫 */
-        .bubbles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #c5a059 0%, #e8d099 50%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bg-gradient-gold {
+            background: linear-gradient(135deg, #c5a059 0%, #e8d099 50%, #c5a059 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c5a059, transparent);
+            margin: 2rem 0;
+        }
+
+        .img-zoom-trigger {
+            cursor: zoom-in;
             overflow: hidden;
-            pointer-events: none;
+            transition: all 0.5s ease;
         }
-        .bubble {
-            position: absolute;
-            bottom: -100px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float-up 10s infinite ease-in-out;
+        .img-zoom-trigger img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 8s; }
-        .bubble:nth-child(2) { width: 80px; height: 80px; left: 30%; animation-duration: 12s; animation-delay: 2s; }
-        .bubble:nth-child(3) { width: 50px; height: 50px; left: 50%; animation-duration: 10s; animation-delay: 4s; }
-        .bubble:nth-child(4) { width: 60px; height: 60px; left: 70%; animation-duration: 14s; animation-delay: 1s; }
-        .bubble:nth-child(5) { width: 30px; height: 30px; left: 90%; animation-duration: 9s; animation-delay: 3s; }
-
-        @keyframes float-up {
-            0% { transform: translateY(0) scale(1); opacity: 0.8; }
-            100% { transform: translateY(-1000px) scale(1.5); opacity: 0; }
+        .img-zoom-trigger:hover img {
+            transform: scale(1.06);
         }
 
-        /* 精品毛玻璃效果 (Glassmorphism) */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px 0 rgba(255, 138, 102, 0.2);
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        .glass-capsule {
-            background: rgba(255, 255, 255, 0.8);
-            color: #ff6b4a;
-            font-weight: bold;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            margin-top: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        /* 主視覺漸層 (珊瑚紅到蜜桃橘) */
-        .hero-gradient {
-            background: linear-gradient(135deg, #ff8a66 0%, #ffc371 100%);
+        .comment-item {
+            animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
-        /* 雙層發光相框 */
-        .hero-image-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
-            z-index: 1;
-            animation: pulse-glow 3s infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.05); opacity: 0.3; }
-        }
-
-        /* 動畫精靈 */
-        .sprite-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 50;
-            cursor: pointer;
-            animation: float-sprite 3s ease-in-out infinite;
-        }
-        @keyframes float-sprite {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        .sprite-tooltip {
-            opacity: 0;
-            transform: translateY(10px) scale(0.9);
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-origin: bottom right;
-        }
-        .sprite-container:hover .sprite-tooltip,
-        .sprite-container:active .sprite-tooltip {
-            opacity: 1;
-            transform: translateY(0px) scale(1);
-        }
-
-        /* 平滑滾動 */
-        html { scroll-behavior: smooth; }
-        
-        /* 隱藏滾動條但保持可以滾動 (針對相片牆) */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="text-gray-800 antialiased relative">
+<body class="antialiased min-h-screen relative flex flex-col">
 
-    <!-- 動畫精靈 (右下角) -->
-    <div class="sprite-container flex flex-col items-end">
-        <div class="sprite-tooltip bg-white text-[#ff6b4a] px-4 py-3 rounded-2xl shadow-xl mb-3 relative font-bold text-sm border-2 border-[#ffc371]">
-            同學們！記得滑到底部填寫報名表喔！🎓
-            <div class="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b-2 border-r-2 border-[#ffc371] transform rotate-45"></div>
-        </div>
-        <!-- 使用 Emoji 組合代表可愛教授，實務上可換成您的 Q 版去背圖 -->
-        <div class="w-16 h-16 bg-white rounded-full shadow-2xl border-4 border-[#ff8a66] flex items-center justify-center text-3xl hover:scale-110 transition-transform">
-            👨‍🏫
-        </div>
-    </div>
-
-    <!-- 首圖主視覺 (Hero Section) -->
-    <header class="relative pt-16 pb-32 hero-gradient overflow-hidden">
-        <!-- 背景氣泡 -->
-        <div class="bubbles">
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
+    <header class="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1920" alt="校園紅樓背景" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-brand-red bg-opacity-85 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-brand-bg opacity-90"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <p class="text-white text-sm md:text-base font-bold tracking-widest mb-4 opacity-90 drop-shadow-md">
-                國立臺南大學 · 特殊教育學系 96級
-            </p>
+        <div class="relative z-10 w-full max-w-5xl mx-auto px-6 py-20 flex flex-col items-center text-center">
             
-            <div class="relative inline-block mb-8">
-                <!-- 老師照片 (更新為上傳的 image.png) -->
-                <div class="teacher.jpg">
-                    <!-- 使用 onerror 確保在沒有下載圖片的環境下有備用圖顯示 -->
+            <div class="mb-6 px-6 py-2 border border-brand-gold/50 rounded-full bg-black/20 backdrop-blur-sm">
+                <span class="font-serif text-brand-lightgold tracking-[0.2em] text-sm font-medium">✨ 南大特教 96 級溫馨召集令 ✨</span>
+            </div>
+
+            <!-- 老師大頭貼 (點擊可放大) -->
+            <div class="relative mb-10 group cursor-zoom-in img-zoom-trigger" onclick="openLightbox('image.png', '我們最敬愛的林慶仁老師')">
+                <div class="absolute inset-[-8px] rounded-full border border-brand-gold/40 animate-[spin_12s_linear_infinite] pointer-events-none"></div>
+                <div class="absolute inset-[-16px] rounded-full border border-brand-gold/20 animate-[spin_18s_linear_infinite_reverse] pointer-events-none"></div>
+                
+                <div class="w-40 h-40 md:w-52 md:h-52 rounded-full p-1.5 bg-gradient-gold shadow-[0_0_30px_rgba(197,160,89,0.3)]">
                     <img src="teacher.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&q=80&w=800'" 
+                         onerror="this.src='https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&q=80&w=400'" 
                          alt="林慶仁教授" 
-                         class="relative z-10 w-56 h-56 md:w-64 md:h-64 object-cover object-center rounded-full border-4 border-white shadow-2xl mx-auto">
+                         class="w-full h-full object-cover rounded-full border-4 border-white">
+                </div>
+                
+                <div class="absolute bottom-2 right-2 bg-brand-red/80 text-white rounded-full p-2 text-xs shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i class="fas fa-search-plus"></i> 點我放大
                 </div>
             </div>
 
-            <h1 class="text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-lg" style="text-shadow: 0 4px 10px rgba(0,0,0,0.15);">
-                林慶仁教授 榮退餐聚
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-widest leading-tight mb-4 drop-shadow-lg">
+                慶仁老師 <span class="text-gradient-gold block md:inline mt-2 md:mt-0">要退休啦！</span>
             </h1>
-            <p class="text-xl md:text-2xl text-white font-medium mb-10 drop-shadow-md">
-                時光荏苒，溫馨回歸！與導師共敘舊情。
+            <p class="font-serif text-xl md:text-2xl text-brand-lightgold tracking-widest mt-6 drop-shadow-md font-light">
+                — 那些年被念的青春，這次換我們請客！ —
             </p>
 
-            <!-- 倒數計時器 (精品毛玻璃) -->
-            <div id="countdown-container" class="glass-panel max-w-2xl mx-auto rounded-3xl p-6 md:p-8 transform hover:-translate-y-1 transition-transform duration-300">
-                <p class="text-white font-bold mb-4 text-lg drop-shadow-md">距離溫馨重聚還有</p>
-                <div class="flex justify-center gap-3 md:gap-6">
-                    <div class="flex flex-col items-center">
-                        <span id="cd-days" class="text-3xl md:text-5xl font-black text-white drop-shadow-lg">00</span>
-                        <span class="glass-capsule">天</span>
-                    </div>
-                    <span class="text-3xl md:text-5xl font-black text-white/50">:</span>
-                    <div class="flex flex-col items-center">
-                        <span id="cd-hours" class="text-3xl md:text-5xl font-black text-white drop-shadow-lg">00</span>
-                        <span class="glass-capsule">時</span>
-                    </div>
-                    <span class="text-3xl md:text-5xl font-black text-white/50">:</span>
-                    <div class="flex flex-col items-center">
-                        <span id="cd-minutes" class="text-3xl md:text-5xl font-black text-white drop-shadow-lg">00</span>
-                        <span class="glass-capsule">分</span>
-                    </div>
-                    <span class="text-3xl md:text-5xl font-black text-white/50">:</span>
-                    <div class="flex flex-col items-center">
-                        <span id="cd-seconds" class="text-3xl md:text-5xl font-black text-white drop-shadow-lg">00</span>
-                        <span class="glass-capsule">秒</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="divider w-1/2 md:w-1/3"></div>
 
-        <!-- 底部波浪 (顏色對齊 #FFF9F0) -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10" style="transform: translateY(1px);">
-            <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.95,124.6,200.7,117.9,242.45,113.8,284.15,92.7,321.39,56.44Z" fill="#FFF9F0"></path>
-            </svg>
+            <p class="text-white/80 font-light tracking-widest text-sm md:text-base leading-relaxed max-w-2xl mt-4">
+                還記得當年紅樓前的下課鐘聲，還有老師親切溫暖的碎碎念嗎？<br class="md:hidden">
+                慶仁老師終於要光榮卸下教鞭、開啟享清福模式了！<br class="hidden md:block">
+                老同學們，這場「歡送兼大聚會」你怎麼能缺席呢？
+            </p>
+
+            <a href="#invitation" class="mt-16 text-brand-lightgold opacity-70 hover:opacity-100 transition-opacity animate-bounce cursor-pointer">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
         </div>
     </header>
 
-    <!-- 活動資訊 & 行事曆 & 導航 -->
-    <section class="py-16 px-6 container mx-auto max-w-4xl -mt-10 relative z-20">
-        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-orange-100 relative overflow-hidden">
-            <!-- 裝飾花紋 -->
-            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full -z-10 opacity-50"></div>
-            
-            <h2 class="text-3xl font-bold text-center text-[#ff6b4a] mb-10 flex items-center justify-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                聚餐資訊
-            </h2>
+    <main class="flex-grow z-10 relative -mt-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div id="invitation" class="glass-card rounded-t-3xl shadow-elegant p-10 md:p-16 text-center">
+                <h2 class="font-serif text-2xl md:text-3xl text-brand-red font-bold tracking-widest mb-8">給 96 特教最親愛的大家</h2>
+                
+                <div class="space-y-6 text-base md:text-lg text-brand-text leading-loose font-light tracking-wide text-justify md:text-center">
+                    <p>
+                        一轉眼，我們從紅樓畢業居然已經好幾年了！<br class="hidden md:block">
+                        曾經在教室裡指引我們前行、對我們無比包容的 <strong>林慶仁 教授</strong>，即將迎來光榮的退休時刻。
+                    </p>
+                    <p>
+                        回想起當年的觀摩、實習，還有老師亦師亦友的關懷，真的有說不完的感謝。<br class="hidden md:block">
+                        於是，我們特別籌辦了這場完全放鬆、充滿笑聲的感恩聚會！<br class="hidden md:block">
+                        誠摯邀請你攜家帶眷、帶著另一半跟寶貝孩子回到台南，跟老師聊聊近況，跟老同學們盡情瞎聊！
+                    </p>
+                    <p class="font-serif text-brand-gold font-bold text-xl mt-8">
+                        約好囉，一個都不能少！一起回溫我們最美好的師生回憶！❤️
+                    </p>
+                </div>
+            </div>
+        </div>
 
-            <div class="grid md:grid-cols-2 gap-10">
-                <!-- 時間與行事曆 -->
-                <div class="space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-orange-100 p-3 rounded-2xl text-[#ff8a66]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-500 font-bold mb-1">聚餐時間</p>
-                            <p class="text-xl font-bold text-gray-800">2026年 7月 11日 (週六)</p>
-                            <p class="text-lg text-gray-600">晚上 18:00 入席</p>
-                        </div>
+        <section class="py-20 px-6 max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl font-bold text-brand-red tracking-widest mb-4">歡聚備忘錄</h2>
+                <div class="w-16 h-1 bg-brand-gold mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- 時間 -->
+                <div class="bg-white rounded-2xl p-8 shadow-card border border-gray-100 hover:shadow-elegant transition-shadow duration-300 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-full bg-brand-bg flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i class="far fa-calendar-alt"></i>
                     </div>
-                    
-                    <!-- 加入行事曆按鈕 -->
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=林慶仁教授榮退餐聚&dates=20260711T100000Z/20260711T130000Z&details=南大特教96級畢業班邀請！&location=臺南大學啟明苑" target="_blank" rel="noopener noreferrer" 
-                       class="inline-flex items-center gap-2 mt-4 text-[#ff6b4a] bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-xl font-bold transition-colors text-sm w-full justify-center md:w-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                        一鍵加入 Google 行事曆
+                    <h3 class="font-serif text-xl font-bold text-brand-text mb-4">歡聚時刻</h3>
+                    <p class="text-2xl text-brand-red font-bold mb-2">2026.07.11 <span class="text-lg text-gray-500">(星期六)</span></p>
+                    <p class="text-gray-600 mb-6">17:30 拍合照與拍肩膀時間 / 19:30 正式開席！</p>
+                    <button onclick="addToCalendar()" class="text-brand-gold hover:text-brand-red font-medium transition-colors text-sm flex items-center gap-2">
+                        <i class="fas fa-plus"></i> 一鍵排入 Google 行事曆
+                    </button>
+                </div>
+
+                <!-- 地點 -->
+                <div class="bg-white rounded-2xl p-8 shadow-card border border-gray-100 hover:shadow-elegant transition-shadow duration-300 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-full bg-brand-bg flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-text mb-4">秘密基地 <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full ml-1 font-sans">暫定</span></h3>
+                    <p class="text-2xl text-brand-red font-bold mb-2">金色三麥 台南南紡店</p>
+                    <p class="text-gray-600 mb-6">台南市東區中華東路一段366號5樓 (南紡 A1 館)</p>
+                    <a href="https://maps.app.goo.gl/h73Pf4y7MgtQibky8" target="_blank" rel="noopener noreferrer" class="text-brand-gold hover:text-brand-red font-medium transition-colors text-sm flex items-center gap-2">
+                        <i class="fas fa-external-link-alt"></i> 點我打開 Google 地圖導航
                     </a>
                 </div>
+            </div>
 
-                <!-- 地點與導航 -->
-                <div class="space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-orange-100 p-3 rounded-2xl text-[#ff8a66]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <!-- 倒數計時器 -->
+            <div class="bg-brand-dark rounded-2xl p-8 md:p-12 shadow-elegant relative overflow-hidden text-center border border-gray-800">
+                <div class="absolute top-0 right-0 opacity-10">
+                    <i class="fas fa-hourglass-half text-9xl text-brand-gold transform rotate-12 -mt-10 -mr-10"></i>
+                </div>
+                
+                <h3 class="font-serif text-brand-lightgold text-xl tracking-widest mb-8 relative z-10">再等一下下！距離大團圓還有</h3>
+                
+                <div id="countdown-container" class="flex justify-center items-center gap-4 md:gap-8 relative z-10">
+                    <div class="flex flex-col items-center">
+                        <span id="cd-days" class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light mb-2">00</span>
+                        <span class="text-xs md:text-sm text-gray-400 tracking-widest">DAYS</span>
+                    </div>
+                    <span class="font-serif text-3xl md:text-5xl text-brand-gold font-light pb-6">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="cd-hours" class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light mb-2">00</span>
+                        <span class="text-xs md:text-sm text-gray-400 tracking-widest">HOURS</span>
+                    </div>
+                    <span class="font-serif text-3xl md:text-5xl text-brand-gold font-light pb-6">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="cd-minutes" class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light mb-2">00</span>
+                        <span class="text-xs md:text-sm text-gray-400 tracking-widest">MINS</span>
+                    </div>
+                    <span class="font-serif text-3xl md:text-5xl text-brand-gold font-light pb-6">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="cd-seconds" class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-gold font-light mb-2">00</span>
+                        <span class="text-xs md:text-sm text-brand-gold/60 tracking-widest">SECS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white border-y border-gray-200">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-3xl font-bold text-brand-red tracking-widest mb-4">黑歷史時光機 📸</h2>
+                    <p class="text-gray-500 tracking-widest text-sm">看看當年超青澀、超好笑的我們（點擊照片可以放大看細節喔！）</p>
+                </div>
+
+                <!-- 橫向滑動照片廊 (點擊均可放大) -->
+                <div class="flex overflow-x-auto gap-6 pb-8 hide-scrollbar snap-x snap-mandatory">
+                    <div class="flex-none w-72 md:w-96 snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200', '懷念的南大紅樓校園（回憶殺！）')">
+                        <div class="relative w-full h-64 md:h-72">
+                            <img src="IMG_4060.JPG" alt="校園" class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
+                                <span class="text-white font-serif tracking-widest border border-white px-6 py-2"><i class="fas fa-search-plus mr-2"></i>點擊放大</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-72 md:w-96 snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=1200', '當年拍照不擺怪表情就不舒服的我們')">
+                        <div class="relative w-full h-64 md:h-72">
+                            <img src="IMG_4061.JPG" alt="合照" class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
+                                <span class="text-white font-serif tracking-widest border border-white px-6 py-2"><i class="fas fa-search-plus mr-2"></i>點擊放大</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-72 md:w-96 snap-center img-zoom-trigger rounded-xl shadow-card group" onclick="openLightbox('https://images.unsplash.com/photo-1511629091441-ee46146481b6?auto=format&fit=crop&q=80&w=1200', '吵吵鬧鬧的熱鬧聚會時光')">
+                        <div class="relative w-full h-64 md:h-72">
+                            <img src="https://images.unsplash.com/photo-1511629091441-ee46146481b6?auto=format&fit=crop&q=80&w=800" alt="聚會" class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
+                                <span class="text-white font-serif tracking-widest border border-white px-6 py-2"><i class="fas fa-search-plus mr-2"></i>點擊放大</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 募集雲端相簿 -->
+                <div class="mt-4 text-center">
+                    <p class="text-gray-600 mb-6">手邊有珍貴（或好笑）的合照嗎？別藏私了！點下方按鈕丟進來，聚餐當天投影出來看誰變最多！😆</p>
+                    <a href="https://drive.google.com/drive/folders/1ZCdWGvdN26d11dsBk7MnjQ0oXalAMLUkWAaeGd5nOtG484qyV9W1iWRnVuPBvI8fcqSyDzQ0?usp=forms_web" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white transition-colors duration-300 rounded-full tracking-widest text-sm">
+                        <i class="fas fa-cloud-upload-alt"></i> 丟照片進共用雲端硬碟 ☁️
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl font-bold text-brand-red tracking-widest mb-4">悄悄話留言板 💬</h2>
+                <div class="w-16 h-1 bg-brand-gold mx-auto mb-4"></div>
+                <p class="text-gray-500 tracking-widest text-sm">想跟慶仁老師說什麼？不用害羞，線上發布即時看板！</p>
+                
+                <!-- 管理者登入快捷控制 -->
+                <div class="mt-4 flex justify-center gap-4">
+                    <button id="admin-toggle-btn" onclick="openAdminModal()" class="text-xs text-gray-400 hover:text-brand-gold transition duration-300 flex items-center gap-1">
+                        <i class="fas fa-user-cog"></i> 管理者登入
+                    </button>
+                    <button id="admin-logout-btn" onclick="logoutAdmin()" class="hidden text-xs text-brand-red hover:underline flex items-center gap-1">
+                        <i class="fas fa-sign-out-alt"></i> 登出管理模式
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-8 items-start">
+                <!-- 留言輸入表單 -->
+                <div class="bg-white rounded-2xl p-6 shadow-card border border-gray-100 md:col-span-2">
+                    <h3 class="font-serif text-lg font-bold text-brand-text mb-4 border-b pb-2 flex items-center gap-2">
+                        <i class="fas fa-pen-fancy text-brand-gold"></i> 寫下給老師的心裡話
+                    </h3>
+                    <form onsubmit="submitComment(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-gray-500 font-bold mb-1">你是誰（姓名/綽號）</label>
+                            <input type="text" id="comment-author" required placeholder="例：阿仁 (閃亮七號)"
+                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-gold text-sm">
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500 font-bold mb-1">聚餐地點</p>
-                            <p class="text-xl font-bold text-gray-800">臺南大學 啟明苑</p>
-                            <p class="text-gray-600">台南市中西區樹林街二段33號</p>
+                            <label class="block text-xs text-gray-500 font-bold mb-1">你的身份</label>
+                            <select id="comment-tag" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-gold text-sm bg-white">
+                                <option value="96級同窗" selected>96級同窗</option>
+                                <option value="96級班代">96級班代</option>
+                                <option value="特教系系友">特教系系友</option>
+                                <option value="家屬/眷屬">家屬/眷屬</option>
+                                <option value="來湊熱鬧的">來湊熱鬧的</option>
+                            </select>
                         </div>
-                    </div>
-                    
-                    <!-- 內嵌 Google 導航 -->
-                    <div class="mt-4 rounded-xl overflow-hidden border border-gray-200 shadow-sm h-32 relative group">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.238965611116!2d120.20455581534062!3d22.97825598497554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e76848d7ccb19%3A0xc3d5d9c2889e472a!2z5ZyL56uL6Ie65Y2X5aSn5a24IOWVn-aYjuiLkg!5e0!3m2!1szh-TW!2stw!4v1689000000000!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <!-- 點擊遮罩，直接開新視窗導航 -->
-                        <a href="https://maps.app.goo.gl/o1HkUuRz9r3k5d1p6" target="_blank" class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="bg-white text-gray-900 px-4 py-2 rounded-full font-bold text-sm">開啟地圖導航</span>
-                        </a>
-                    </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 font-bold mb-1">你想說的話</label>
+                            <textarea id="comment-text" required rows="4" placeholder="老師退休快樂！感謝當年被我盧..."
+                                      class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-gold text-sm resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-red text-white py-2.5 rounded-lg font-medium hover:bg-brand-red/90 transition shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-sm">
+                            <i class="fas fa-paper-plane"></i> 光速發布祝福
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 留言板列表 -->
+                <div class="md:col-span-3 space-y-4 max-h-[420px] overflow-y-auto pr-2 custom-scroll hide-scrollbar" id="comments-list">
+                    <!-- 動態載入 -->
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 常見問題 Q&A (手風琴) -->
-    <section class="py-8 px-6 container mx-auto max-w-3xl">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">常見問題 Q&A</h2>
-        <div class="space-y-4">
-            <!-- Q1 -->
-            <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
-                    當天可以攜帶家人或小孩參加嗎？
-                    <span class="transition group-open:rotate-180 text-[#ff8a66]">
-                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                </summary>
-                <p class="text-gray-600 mt-4 leading-relaxed">
-                    非常歡迎！老師看到大家成家立業一定會很開心。請務必在下方報名表單中，確實填寫同行大人與小孩的人數，以便我們安排座位與準備兒童餐具。
-                </p>
-            </details>
-            <!-- Q2 -->
-            <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
-                    餐會費用大約多少？如何繳交？
-                    <span class="transition group-open:rotate-180 text-[#ff8a66]">
-                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                </summary>
-                <p class="text-gray-600 mt-4 leading-relaxed">
-                    目前預估每位大人的費用約為 $800 - $1,000 元，小孩視年紀另計或免費。
-                </p>
-            </details>
-        </div>
-    </section>
+        <section id="rsvp" class="py-24 px-6 max-w-4xl mx-auto text-center">
+            <div class="bg-brand-red rounded-3xl p-10 md:p-16 shadow-elegant text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#pattern)" />
+                    </svg>
+                </div>
 
-    <!-- 懷舊相片牆 (時光迴廊) -->
-    <section class="py-16 bg-gradient-to-b from-transparent to-orange-50">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-gray-800 mb-3">時光迴廊</h2>
-                <p class="text-gray-500">還記得那些年在南大紅樓穿梭、在教室裡聽課的日子嗎？</p>
+                <div class="relative z-10">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold tracking-widest mb-6">等你點頭，敲碗報名！</h2>
+                    <p class="text-brand-lightgold font-light tracking-widest mb-10 text-sm md:text-base leading-relaxed">
+                        拜託在 <span class="font-bold border-b border-brand-lightgold pb-1">6 月 20 日 週六</span> 之前，動動手指完成表單報名喔！<br>
+                        期待跟你在夏夜裡一起乾杯大笑！
+                    </p>
+
+                    <a href="https://forms.gle/SY4z1kyVJLRx6cdr5" target="_blank" rel="noopener noreferrer" 
+                       class="inline-block bg-gradient-gold text-brand-dark font-serif font-bold tracking-widest px-10 py-4 rounded-full shadow-[0_5px_15px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_20px_rgba(197,160,89,0.4)] transform hover:-translate-y-1 transition-all duration-300">
+                        點我！光速報名表單
+                    </a>
+                </div>
             </div>
             
-            <div class="flex overflow-x-auto gap-4 pb-8 hide-scrollbar snap-x snap-mandatory">
-                <div class="flex-none w-64 md:w-80 h-64 snap-center relative group overflow-hidden rounded-2xl shadow-lg border-4 border-white">
-                    <img src="IMG_4007.JPG" alt="校園回憶" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p class="text-white font-bold">校園一角</p>
-                    </div>
-                </div>
-                <div class="flex-none w-64 md:w-80 h-64 snap-center relative group overflow-hidden rounded-2xl shadow-lg border-4 border-white">
-                    <img src="IMG_4060.JPG" alt="大合照" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p class="text-white font-bold">難忘的合照</p>
-                    </div>
-                </div>
-                <div class="flex-none w-64 md:w-80 h-64 snap-center relative group overflow-hidden rounded-2xl shadow-lg border-4 border-white">
-                    <img src="IMG_4061.JPG" alt="師生互動" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p class="text-white font-bold">相聚時光</p>
-                    </div>
-                </div>
+            <!-- 行前碎碎念 -->
+            <div class="mt-12 text-left bg-white p-8 rounded-xl border border-gray-200 shadow-sm max-w-2xl mx-auto">
+                <h4 class="font-serif font-bold text-brand-text mb-4 text-lg">💡 來，行前碎碎念（溫馨小提醒）</h4>
+                <ul class="space-y-3 text-gray-600 text-sm leading-relaxed tracking-wide">
+                    <li><i class="fas fa-check text-brand-gold mr-2"></i><strong>帶眷屬大歡迎：</strong> 慶仁老師最喜歡看熱鬧了！非常歡迎把老公/老婆/閃光或小孩帶來，在表單備註好人數就 OK 囉！</li>
+                    <li><i class="fas fa-check text-brand-gold mr-2"></i><strong>關於摳摳：</strong> 預計每位大人大約 $800 - $1,000 元上下（包含我們一起準備給老大的特別驚喜紀念品），等確認完人數後會發信或群組通知匯款資訊喔。</li>
+                    <li><i class="fas fa-check text-brand-gold mr-2"></i><strong>真的不能來嗚嗚：</strong> 如果時間撞到不克前來，也拜託花一分鐘填寫表單，留下你想對老師說的話！</li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Google Forms 報名引導區塊 -->
-    <section class="py-20 px-6 container mx-auto max-w-3xl" id="rsvp">
-        <div class="bg-gradient-to-br from-[#ffecd2] to-[#fcb69f] rounded-[2rem] shadow-2xl p-8 md:p-14 text-center relative overflow-hidden transform hover:-translate-y-2 transition-transform duration-500 border-4 border-white">
-            
-            <div class="absolute top-0 right-0 -mt-10 -mr-10 text-white opacity-20">
-                <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
-            </div>
-
-            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg text-[#ff6b4a]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            </div>
-
-            <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">誠摯邀請您回娘家！</h2>
-            <p class="text-lg text-gray-700 mb-10 font-medium">
-                為了精準統計桌數與餐飲需求，請點擊下方按鈕前往填寫專屬報名表。<br class="hidden md:block">
-                無論能否出席，都歡迎留下您對林教授的滿滿祝福喔！
+    <footer class="bg-brand-dark text-center py-10 border-t-4 border-brand-gold z-10 mt-auto">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="font-serif text-brand-lightgold tracking-[0.2em] mb-4 text-lg">一 輩 子 的 慶 仁 導 師 班</p>
+            <p class="text-gray-400 text-xs tracking-widest font-light">
+                © 2026 國立臺南大學 特殊教育學系 96級畢業班 籌備小組代表電話敲碗敬邀<br>
+                <span class="mt-2 inline-block opacity-50">All Rights Reserved. 願老師退休天天睡到自然醒！</span>
             </p>
-
-            <a href="https://forms.gle/SY4z1kyVJLRx6cdr5" target="_blank" rel="noopener noreferrer" 
-               class="inline-block w-full md:w-auto bg-gradient-to-r from-[#ff6b4a] to-[#ff8a66] text-white font-black text-xl py-4 px-12 rounded-full shadow-[0_10px_25px_-5px_rgba(255,107,74,0.5)] hover:shadow-[0_20px_35px_-5px_rgba(255,107,74,0.6)] hover:scale-105 transition-all duration-300">
-                👉 前往填寫報名表
-            </a>
-            
-            <p class="mt-4 text-sm text-gray-600">※ 將在新視窗開啟 Google 表單，資料填寫更順暢安全。</p>
-        </div>
-    </section>
-
-    <!-- 時光膠囊：舊照募集區 -->
-    <section class="py-16 px-6 bg-white border-t border-gray-100 text-center">
-        <div class="max-w-2xl mx-auto">
-            <div class="mb-6 text-[#ff8a66] flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-4">分享我們的青春回憶</h3>
-            <p class="text-gray-600 mb-8 leading-relaxed">
-                主辦團隊正在準備餐會當天的驚喜回顧影片！<br>
-                如果您手機或電腦裡有當年特教96級的珍貴合照、或是與林老師的有趣互動，請務必點擊下方連結，上傳到我們的「雲端時光膠囊」資料夾！
-            </p>
-
-            <a href="https://drive.google.com/drive/folders/1ZCdWGvdN26d11dsBk7MnjQ0oXalAMLUkWAaeGd5nOtG484qyV9W1iWRnVuPBvI8fcqSyDzQ0?usp=forms_web" 
-               target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center justify-center gap-3 bg-white border-2 border-[#ff8a66] text-[#ff6b4a] font-bold text-lg py-3 px-8 rounded-full hover:bg-orange-50 transition-colors shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                照片直達雲端特快車
-            </a>
-        </div>
-    </section>
-
-    <!-- 頁尾 -->
-    <footer class="bg-gray-50 py-8 border-t border-gray-200">
-        <div class="container mx-auto px-6 text-center text-gray-500 text-sm">
-            <p>國立臺南大學 特殊教育學系 96級 畢業班 敬邀</p>
-            <p class="mt-2">期待與您在仲夏之夜重聚 🎓</p>
         </div>
     </footer>
 
-    <!-- 倒數計時器邏輯 -->
-    <script>
-        // 設定餐聚時間：2026年 7月 11日 18:00:00 (可依實際需求修改年份)
-        const eventDate = new Date("July 11, 2026 18:00:00").getTime();
+    <!-- 返回頂部按鈕 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-brand-gold text-white w-12 h-12 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center hover:bg-brand-red z-50 transform translate-y-4">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
+    <!-- 點圖放大燈箱元件 (Lightbox Modal) -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl hover:text-brand-lightgold transition" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="max-w-[90vw] max-h-[80vh] flex flex-col items-center" onclick="event.stopPropagation()">
+            <img id="lightbox-img" class="max-w-full max-h-[75vh] object-contain rounded-lg border-2 border-brand-gold shadow-2xl" src="" alt="">
+            <p id="lightbox-caption" class="text-white font-serif mt-4 text-center tracking-widest text-lg"></p>
+        </div>
+    </div>
+
+    <!-- 留言成功提示泡泡 (Toast) -->
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-brand-gold text-white px-6 py-3 rounded-full shadow-2xl font-serif tracking-widest text-sm flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-[101]">
+        <i class="fas fa-check-circle"></i> <span id="toast-text">留言成功囉！老師一定會看！</span>
+    </div>
+
+    <!-- 管理者登入彈窗 -->
+    <div id="admin-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[110] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out" onclick="closeAdminModal()">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 shadow-2xl border border-brand-gold" onclick="event.stopPropagation()">
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-brand-bg text-brand-gold flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-brand-text">管理者登入</h3>
+                <p class="text-xs text-gray-400 mt-1">請輸入管理密碼以啟用編輯/刪除功能</p>
+            </div>
+            <div class="space-y-4">
+                <input type="password" id="admin-password" placeholder="請輸入密碼" 
+                       class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-gold text-center tracking-widest text-sm">
+                <p id="admin-error-msg" class="text-xs text-brand-red text-center hidden">❌ 密碼錯誤，請再試一次</p>
+                <div class="flex gap-2">
+                    <button onclick="closeAdminModal()" class="flex-1 py-2 border border-gray-200 rounded-lg text-xs font-medium text-gray-500 hover:bg-gray-50 transition">
+                        取消
+                    </button>
+                    <button onclick="loginAdmin()" class="flex-1 py-2 bg-brand-red text-white rounded-lg text-xs font-medium hover:bg-brand-red/90 transition shadow-md">
+                        登入
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 編輯留言彈窗 -->
+    <div id="edit-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[110] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out" onclick="closeEditModal()">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 shadow-2xl border border-brand-gold" onclick="event.stopPropagation()">
+            <h3 class="font-serif text-lg font-bold text-brand-text mb-4 border-b pb-2">✏️ 編輯留言</h3>
+            <div class="space-y-4">
+                <input type="hidden" id="edit-comment-id">
+                <div>
+                    <label class="block text-xs text-gray-500 font-bold mb-1">姓名/綽號</label>
+                    <input type="text" id="edit-comment-author" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-gold text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 font-bold mb-1">身份</label>
+                    <select id="edit-comment-tag" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-gold text-sm bg-white">
+                        <option value="96級同窗" selected>96級同窗</option>
+                        <option value="96級班代">96級班代</option>
+                        <option value="特教系系友">特教系系友</option>
+                        <option value="家屬/眷屬">家屬/眷屬</option>
+                        <option value="來湊熱鬧的">來湊熱鬧的</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 font-bold mb-1">內容</label>
+                    <textarea id="edit-comment-text" rows="4" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-gold text-sm resize-none"></textarea>
+                </div>
+                <div class="flex gap-2 justify-end">
+                    <button onclick="closeEditModal()" class="px-4 py-2 border border-gray-200 rounded-lg text-xs font-medium text-gray-500 hover:bg-gray-50 transition">
+                        取消
+                    </button>
+                    <button onclick="saveEditedComment()" class="px-4 py-2 bg-brand-gold text-white rounded-lg text-xs font-medium hover:bg-brand-gold/90 transition shadow-md">
+                        儲存修改
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 倒數計時邏輯 (目標：2026/07/11T17:30:00)
         function updateCountdown() {
+            const targetDate = new Date('2026-07-11T17:30:00').getTime();
             const now = new Date().getTime();
-            const distance = eventDate - now;
+            const distance = targetDate - now;
+
+            const container = document.getElementById('countdown-container');
+            if (!container) return;
 
             if (distance < 0) {
-                document.getElementById("cd-days").innerText = "00";
-                document.getElementById("cd-hours").innerText = "00";
-                document.getElementById("cd-minutes").innerText = "00";
-                document.getElementById("cd-seconds").innerText = "00";
+                container.innerHTML = '<div class="text-2xl md:text-3xl text-brand-lightgold font-bold py-6">🎉 派對已經正式開始囉！ 🎉</div>';
                 return;
             }
 
@@ -398,17 +502,272 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // 補零
-            document.getElementById("cd-days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("cd-hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("cd-minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("cd-seconds").innerText = seconds.toString().padStart(2, '0');
+            document.getElementById('cd-days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('cd-hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 點圖放大燈箱功能
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            
+            img.src = src;
+            cap.innerText = caption;
+            
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            lightbox.classList.add('opacity-100');
+            document.body.style.overflow = 'hidden'; // 防止背景滾動
         }
 
-        // 立即執行一次，避免剛載入時顯示空白或預設值
-        updateCountdown();
-        // 每秒更新
-        setInterval(updateCountdown, 1000);
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            lightbox.classList.remove('opacity-100');
+            document.body.style.overflow = ''; // 恢復背景滾動
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // 行事曆與返回頂部功能
+        function addToCalendar() {
+            const title = "慶仁老師光榮退休餐聚！";
+            const details = "南大特教96級溫馨聚會，敬請準時出席！";
+            const location = "金色三麥 台南南紡店";
+            const dates = "20260711T093000Z/20260711T133000Z";
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${dates}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            window.open(url, '_blank');
+        }
+
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 留言板預載資料 (溫馨幽默風)
+        const initialComments = [
+            {
+                id: "comment-1",
+                author: "家委 (球場上負責不傳球的辣個男人)",
+                tag: "96級同窗",
+                text: "慶仁老師退休快樂！以前我們在場上打球，我都只顧著自己出手死不傳球，每次看到你在場邊搖頭苦笑、還溫柔地勸我要多配合大家，現在回想起來真的好懷念！這次聚餐我保證乖乖聽話，只負責把最好吃的菜夾到老師碗裡！",
+                time: "剛才"
+            },
+            {
+                id: "comment-2",
+                author: "冠挺 (逼人灌水球的那位)",
+                tag: "96級同窗",
+                text: "老師～還記得以前辦活動我帶頭逼大家瘋狂灌水球互砸嗎？那時候全場濕答答的，連您經過都差點被我們波及，好險您一如既往的大量，只有慈祥地笑著叫我們注意安全。現在我已經成熟穩重多了！這次絕對不灌水球，改灌老師滿滿的祝福！",
+                time: "1 小時前"
+            },
+            {
+                id: "comment-3",
+                author: "電話（台大四年中全勤獎那位）",
+                tag: "96級同窗",
+                text: "天啊時間過得太快了，一轉眼老師居然要光榮退休了！身為在台大四年拿到全勤獎的優等生，每次想起在南大特教與老師相處的溫馨點滴，依然覺得是最美好的回憶。祝福老師退休後生活天天精彩，每天都要全勤享受悠閒時光喔！",
+                time: "4 小時前"
+            }
+        ];
+
+        let isAdmin = false;
+        const ADMIN_PASSWORD = "admin96"; // 管理者預設密碼
+
+        // 渲染留言
+        function renderComments() {
+            const container = document.getElementById('comments-list');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            initialComments.forEach(comment => {
+                const el = document.createElement('div');
+                el.className = "bg-white rounded-xl p-4 shadow-sm border border-gray-100 comment-item relative";
+                
+                // 登入後顯示管理者控制按鈕
+                const adminControls = isAdmin ? `
+                    <div class="flex items-center gap-2 ml-2">
+                        <button onclick="openEditModal('${comment.id}')" class="text-xs text-gray-400 hover:text-brand-gold transition duration-200" title="編輯留言">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button onclick="deleteComment('${comment.id}')" class="text-xs text-gray-400 hover:text-brand-red transition duration-200" title="刪除留言">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                ` : '';
+
+                el.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-serif font-bold text-brand-text text-sm">${escapeHtml(comment.author)}</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] bg-brand-bg text-brand-gold px-2 py-0.5 rounded-full border border-brand-gold/20">${escapeHtml(comment.tag)}</span>
+                            ${adminControls}
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed text-justify mb-2">${escapeHtml(comment.text)}</p>
+                    <span class="absolute bottom-2 right-4 text-[10px] text-gray-400 font-light">${escapeHtml(comment.time)}</span>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        // 送出留言
+        function submitComment(e) {
+            e.preventDefault();
+            const author = document.getElementById('comment-author').value.trim();
+            const tag = document.getElementById('comment-tag').value;
+            const text = document.getElementById('comment-text').value.trim();
+
+            if (!author || !text) return;
+
+            // 新增留言並給予獨一無二的 ID 識別碼
+            initialComments.unshift({
+                id: 'comment-' + Date.now(),
+                author: author,
+                tag: tag,
+                text: text,
+                time: "剛才"
+            });
+
+            renderComments();
+
+            // 重置表單
+            document.getElementById('comment-author').value = '';
+            document.getElementById('comment-text').value = '';
+
+            // 顯示成功 Toast
+            showToast("成功留下悄悄話！老師一定會看到。");
+        }
+
+        // 管理者相關功能
+        function openAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            document.getElementById('admin-password').value = '';
+            document.getElementById('admin-error-msg').classList.add('hidden');
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+        }
+
+        function loginAdmin() {
+            const pwdInput = document.getElementById('admin-password').value;
+            if (pwdInput === ADMIN_PASSWORD) {
+                isAdmin = true;
+                closeAdminModal();
+                document.getElementById('admin-toggle-btn').classList.add('hidden');
+                document.getElementById('admin-logout-btn').classList.remove('hidden');
+                renderComments();
+                showToast("🔓 已登入管理模式，可直接編輯/刪除留言！");
+            } else {
+                document.getElementById('admin-error-msg').classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdmin = false;
+            document.getElementById('admin-toggle-btn').classList.remove('hidden');
+            document.getElementById('admin-logout-btn').classList.add('hidden');
+            renderComments();
+            showToast("🔒 已登出管理員模式");
+        }
+
+        function deleteComment(id) {
+            const index = initialComments.findIndex(c => c.id === id);
+            if (index !== -1) {
+                initialComments.splice(index, 1);
+                renderComments();
+                showToast("🗑️ 留言已成功刪除！");
+            }
+        }
+
+        function openEditModal(id) {
+            const comment = initialComments.find(c => c.id === id);
+            if (!comment) return;
+
+            document.getElementById('edit-comment-id').value = comment.id;
+            document.getElementById('edit-comment-author').value = comment.author;
+            document.getElementById('edit-comment-tag').value = comment.tag;
+            document.getElementById('edit-comment-text').value = comment.text;
+
+            const modal = document.getElementById('edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+        }
+
+        function closeEditModal() {
+            const modal = document.getElementById('edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+        }
+
+        function saveEditedComment() {
+            const id = document.getElementById('edit-comment-id').value;
+            const author = document.getElementById('edit-comment-author').value.trim();
+            const tag = document.getElementById('edit-comment-tag').value;
+            const text = document.getElementById('edit-comment-text').value.trim();
+
+            if (!author || !text) return;
+
+            const comment = initialComments.find(c => c.id === id);
+            if (comment) {
+                comment.author = author;
+                comment.tag = tag;
+                comment.text = text;
+                renderComments();
+                closeEditModal();
+                showToast("✏️ 留言已成功編修！");
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+                toast.classList.remove('opacity-100');
+            }, 3000);
+        }
+
+        // 安全字串轉義防止 XSS
+        function escapeHtml(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+
+        // 初始化
+        window.onload = function() {
+            renderComments();
+        };
     </script>
 </body>
 </html>
